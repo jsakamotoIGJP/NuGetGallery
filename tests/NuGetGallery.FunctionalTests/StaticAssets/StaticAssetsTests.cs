@@ -113,11 +113,6 @@ namespace NuGetGallery.FunctionalTests.StaticAssets
             },
         };
 
-        private static readonly IReadOnlyList<string> MinifiedFiles = new[]
-        {
-            "Content/gallery/css/bootstrap.min.css",
-        };
-
         private static readonly HashSet<string> BundleInputPaths = new HashSet<string>(Bundles.SelectMany(x => x.Value));
 
         public static IEnumerable<object[]> AssetData => AssetPaths.Value.Select(x => new object[] { x });
@@ -125,6 +120,10 @@ namespace NuGetGallery.FunctionalTests.StaticAssets
         public static IEnumerable<object[]> BundleInputExceptBundleOutputData => BundleInputPaths
             .Except(Bundles.Keys.Select(GetUnMinPath))
             .Select(x => new object[] { x });
+        private static IEnumerable<string> MinifiedFiles => new[]
+        {
+            "Content/gallery/css/bootstrap.min.css",
+        };
 
         public HttpClient HttpClient { get; }
 
