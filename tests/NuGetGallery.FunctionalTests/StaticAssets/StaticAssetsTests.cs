@@ -120,7 +120,7 @@ namespace NuGetGallery.FunctionalTests.StaticAssets
         public static IEnumerable<object[]> BundleInputExceptBundleOutputData => BundleInputPaths
             .Except(Bundles.Keys.Select(GetUnMinPath))
             .Select(x => new object[] { x });
-        private static IEnumerable<string> MinifiedFiles => new[]
+        public static IEnumerable<string> MinifiedFiles => new[]
         {
             "Content/gallery/css/bootstrap.min.css",
         };
